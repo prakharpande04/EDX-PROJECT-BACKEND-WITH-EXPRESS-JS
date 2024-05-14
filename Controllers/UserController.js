@@ -25,11 +25,9 @@ async function register(req, res) {
     await newUser.save();
 
     // Create a JWT token for the user
-    const token = jwt.sign(
-      { userId: newUser._id, username },
-      process.env.JWT_SECRET,
-      { expiresIn: "1h" }
-    );
+    const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
 
     res.json({ message: "User registered successfully!", token });
   } catch (error) {
@@ -56,7 +54,7 @@ async function login(req, res) {
 
     // Create a JWT token for the user
     const token = jwt.sign(
-      { userId: registeredUser._id, username },
+      { userId: registeredUser._id },
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
