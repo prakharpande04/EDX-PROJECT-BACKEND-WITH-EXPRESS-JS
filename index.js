@@ -15,7 +15,7 @@ const ReviewRoutes = require("./Routes/ReviewRoutes");
 const url = process.env.MONGODB_URL;
 
 mongoose
-  .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(url)
   .then(() => {
     console.log("Connected to MongoDB Database");
 

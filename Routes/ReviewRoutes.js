@@ -1,12 +1,11 @@
-import { Router } from "express";
-import auth from "../Middleware/auth.js";
-import {
+const express = require("express");
+const router = express.Router();
+const auth = require("../Middleware/auth.js");
+const {
   addReview,
   getReview,
   deleteReview,
-} from "../Controllers/ReviewController.js";
-
-const router = Router();
+} = require("../Controllers/ReviewController.js");
 
 // registered users
 router.put("/books/:id/reviews", auth, addReview);
@@ -15,4 +14,4 @@ router.delete("/books/:id/reviews", auth, deleteReview);
 // general users
 router.get("/books/:id/reviews", getReview);
 
-export default router;
+module.exports = router;
