@@ -17,7 +17,7 @@ To get started with the Bookstore API, follow the instructions below:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/aniketraut16/EDX-PROJECT-BACKEND-WITH-EXPRESS-JS.git
+   git clone https://github.com/prakharpande04/EDX-PROJECT-BACKEND-WITH-EXPRESS-JS.git
    ```
 
 2. Navigate to the project directory:
