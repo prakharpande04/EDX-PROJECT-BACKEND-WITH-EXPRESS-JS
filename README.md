@@ -45,22 +45,22 @@ To get started with the Bookstore API, follow the instructions below:
 
 ### Public Endpoints
 
-- **GET /api/books**
+- **GET http://localhost:8080/books**
   - Retrieves the list of all books available in the shop.
 
-- **GET /api/books?ISBN=<ISBN>**
+- **GET http://localhost:8080/books/byISBN**
   - Retrieves books based on ISBN.
 
-- **GET /api/books?author=<AuthorName>**
+- **GET http://localhost:8080/books/byAuthor**
   - Retrieves all books by a specific author.
 
-- **GET /api/books?title=<Title>**
+- **GET http://localhost:8080/books/byTitle**
   - Retrieves all books based on title.
 
-- **GET /api/books/:id/reviews**
+- **GET http://localhost:8080/books/:id/reviews**
   - Retrieves reviews for a specific book.
 
-- **POST /api/register**
+- **POST http://localhost:8080/register**
   - Registers a new user.
   - Body:
     ```json
@@ -70,7 +70,7 @@ To get started with the Bookstore API, follow the instructions below:
     }
     ```
 
-- **POST /api/login**
+- **POST http://localhost:8080/login**
   - Logs in as a registered user.
   - Body:
     ```json
@@ -82,7 +82,7 @@ To get started with the Bookstore API, follow the instructions below:
 
 ### Authenticated Endpoints
 
-- **POST /api/books/:id/reviews**
+- **POST http://localhost:8080/books/:id/reviews**
   - Adds or modifies a book review.
   - Requires authentication.
   - Header: `Authorization: Bearer <JWT_TOKEN>`
@@ -93,7 +93,7 @@ To get started with the Bookstore API, follow the instructions below:
     }
     ```
 
-- **DELETE /api/books/:id/reviews**
+- **DELETE http://localhost:8080/books/:id/reviews**
   - Deletes a book review added by the authenticated user.
   - Requires authentication.
   - Header: `Authorization: Bearer <JWT_TOKEN>`
@@ -108,7 +108,7 @@ The following are sample Node.js program methods for interacting with the API:
 
   async function getAllBooks() {
     try {
-      const response = await axios.get("http://localhost:8080/api/books");
+      const response = await axios.get("http://localhost:8080/books");
       console.log(response.data);
     } catch (error) {
       console.error(error);
@@ -120,10 +120,10 @@ The following are sample Node.js program methods for interacting with the API:
 
 - **Search by ISBN** (Using Promises)
   ```javascript
-  const axios = require("axios");
+ const axios = require("axios");
 
   function searchByISBN(ISBN) {
-    axios.get(`http://localhost:8080/api/books?ISBN=${ISBN}`)
+    axios.get(`http://localhost:8080/books/byISBN`,{ISBM:ISBN})
       .then(response => console.log(response.data))
       .catch(error => console.error(error));
   }
@@ -133,34 +133,34 @@ The following are sample Node.js program methods for interacting with the API:
 
 - **Search by Author**
   ```javascript
-  const axios = require("axios");
+const axios = require("axios");
 
   async function searchByAuthor(authorName) {
     try {
-      const response = await axios.get(`http://localhost:8080/api/books?author=${authorName}`);
+      const response = await axios.get(`http://localhost:8080/books/byAuthor`,{author:authorName});
       console.log(response.data);
     } catch (error) {
       console.error(error);
     }
   }
 
-  searchByAuthor("Author Name");
+  searchByAuthor("AuthorName");
   ```
 
 - **Search by Title**
   ```javascript
-  const axios = require("axios");
+ const axios = require("axios");
 
-  async function searchByTitle(title) {
+  async function searchByAuthor(title) {
     try {
-      const response = await axios.get(`http://localhost:8080/api/books?title=${title}`);
+      const response = await axios.get(`http://localhost:8080/books/byTitle`,{title:title});
       console.log(response.data);
     } catch (error) {
       console.error(error);
     }
   }
 
-  searchByTitle("Book Title");
+  searchByAuthor("title");
   ```
 
 ## Author
