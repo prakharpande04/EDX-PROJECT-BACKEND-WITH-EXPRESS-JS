@@ -165,7 +165,7 @@ const axios = require("axios");
 
 ## Author
 
-Aniket Raut
+Prakhar Pande
 
 ## License
 
